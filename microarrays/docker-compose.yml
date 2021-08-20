@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  gabi:
+    image: quay.io/comp-bio-aging/microarrays
+    ports:
+      - 8787:8787
+    environment:
+      PASSWORD: "letitbebunu"
+    volumes:
+      - /data/gabi:/home/rstudio
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.entryPoints=https"
+      - "traefik.http.routers.humenhance_local.rule=Host(`gabi.localhost`)"
+      - "traefik.http.routers.humenhance.rule=Host(`gabi.agingkills.eu`)"
+      - "traefik.port=8787"
+    networks:
+      - web
+    deploy:
+      restart_policy:
+        condition: any
+
+networks:
+  web:
+    name: web
+    external: true
