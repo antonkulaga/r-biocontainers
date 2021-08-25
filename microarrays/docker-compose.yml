@@ -11,10 +11,14 @@ services:
       - /data/gabi:/home/rstudio
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.entryPoints=https"
-      - "traefik.http.routers.humenhance_local.rule=Host(`gabi.localhost`)"
-      - "traefik.http.routers.humenhance.rule=Host(`gabi.agingkills.eu`)"
-      - "traefik.port=8787"
+      # gabi.agingkills.eu
+      - "traefik.http.routers.gabi.rule=Host(`gabi.agingkills.eu`)"
+      - "traefik.http.routers.gabi.entrypoints=http"
+      # gabi.localhost
+      - "traefik.http.routers.local_gabi.rule=Host(`gabi.localhost`)"
+      - "traefik.http.routers.local_gabi.entrypoints=http"
+      #services
+      - "traefik.http.services.gabi.loadbalancer.server.port=8787"
     networks:
       - web
     deploy:
