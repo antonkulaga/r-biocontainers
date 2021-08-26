@@ -1,4 +1,5 @@
-FROM quay.io/comp-bio-aging/rbiostudio:master
+FROM quay.io/comp-bio-aging/rbiostudio:latest
+
 MAINTAINER antonkulaga@gmail.com
 
 ADD install.R /tmp/

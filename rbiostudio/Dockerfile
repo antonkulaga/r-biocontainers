@@ -1,4 +1,4 @@
-FROM quay.io/comp-bio-aging/rstudio:master
+FROM quay.io/comp-bio-aging/rstudio:latest
 
 MAINTAINER antonkulaga@gmail.com
 
